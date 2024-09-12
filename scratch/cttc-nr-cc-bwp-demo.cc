@@ -31,6 +31,8 @@
 #include "ns3/ipv4-global-routing-helper.h"
 #include "ns3/config-store-module.h"
 #include "ns3/nr-mac-scheduler-tdma-rr.h"
+#include "ns3/nr-mac-scheduler-ofdma-pf.h"  // ofdma pf 스케줄링 헤더파일 추가
+#include "ns3/nr-mac-scheduler-ofdma-rr.h"  // ofdma rr 스케줄링 헤더파일 추가
 #include "ns3/nr-module.h"
 #include "ns3/point-to-point-module.h"
 #include "ns3/ideal-beamforming-algorithm.h"
