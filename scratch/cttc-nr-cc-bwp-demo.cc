@@ -107,7 +107,7 @@ main (int argc, char *argv[])
   uint16_t numerologyCc0Bwp1 = 4;
   uint16_t numerologyCc1Bwp0 = 3;
 
-  std::string pattern = "F|F|F|F|F|F|F|F|F|F|"; // Pattern can be e.g. "DL|S|UL|UL|DL|DL|S|UL|UL|Dddd
+  std::string pattern = "F|F|F|F|F|F|F|F|F|F|"; // Pattern can be e.g. "DL|S|UL|UL|DL|DL|S|UL|UL|DL|
   double totalTxPower = 8;
   bool cellScan = false;
   double beamSearchAngleStep = 10.0;
@@ -228,7 +228,7 @@ main (int argc, char *argv[])
   //ConfigStore inputConfig;
   //inputConfig.ConfigureDefaults ();
 
-  // enable logging or not
+  // enable logging or not  // logging이면 LTE 사용하는듯
   if (logging)
     {
       LogComponentEnable ("Nr3gppPropagationLossModel", LOG_LEVEL_ALL);
@@ -241,14 +241,16 @@ main (int argc, char *argv[])
 
   Config::SetDefault ("ns3::LteRlcUm::MaxTxBufferSize", UintegerValue (999999999));
 
-  // create base stations and mobile terminals
+  // gNB, UE 노드 컨테이너 구성
   NodeContainer gNbNodes;
   NodeContainer ueNodes;
   MobilityHelper mobility;
 
+  // gNB, UE 높이 설정
   double gNbHeight = 10;
   double ueHeight = 1.5;
 
+  // gNB, UE 개수 만큼 노드 컨테이너 생성
   gNbNodes.Create (gNbNum);
   ueNodes.Create (ueNumPergNb * gNbNum);
 
@@ -256,6 +258,7 @@ main (int argc, char *argv[])
   Ptr<ListPositionAllocator> staPositionAlloc = CreateObject<ListPositionAllocator> ();
   int32_t yValue = 0.0;
 
+  // gNB, UE Position 할당하는 부분 (2차원)
   for (uint32_t i = 1; i <= gNbNodes.GetN (); ++i)
     {
       // 2.0, -2.0, 6.0, -6.0, 10.0, -10.0, ....
@@ -303,7 +306,7 @@ main (int argc, char *argv[])
   mobility.Install (ueNodes);
 
 
-  // setup the nr simulation
+  // 시뮬레이션 환경 설정
   Ptr<NrPointToPointEpcHelper> epcHelper = CreateObject<NrPointToPointEpcHelper> ();
   Ptr<IdealBeamformingHelper> idealBeamformingHelper = CreateObject<IdealBeamformingHelper>();
   Ptr<NrHelper> nrHelper = CreateObject<NrHelper> ();
