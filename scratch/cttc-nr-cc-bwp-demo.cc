@@ -105,7 +105,7 @@ main (int argc, char *argv[])
   uint16_t numerologyCc0Bwp1 = 4;
   uint16_t numerologyCc1Bwp0 = 3;
 
-  std::string pattern = "F|F|F|F|F|F|F|F|F|F|"; // Pattern can be e.g. "DL|S|UL|UL|DL|DL|S|UL|UL|DL|"
+  std::string pattern = "F|F|F|F|F|F|F|F|F|F|"; // Pattern can be e.g. "DL|S|UL|UL|DL|DL|S|UL|UL|Dddd
   double totalTxPower = 8;
   bool cellScan = false;
   double beamSearchAngleStep = 10.0;
