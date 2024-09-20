@@ -80,7 +80,7 @@ main (int argc, char *argv[])
    */
   // Scenario parameters (that we will use inside this script):
   uint16_t gNbNum = 1;
-  uint16_t ueNumPergNb = 2;
+  uint16_t ueNumPergNb = 50;
   bool logging = false;
   bool doubleOperationalBand = true;
 
@@ -183,7 +183,7 @@ main (int argc, char *argv[])
    */
   NS_ABORT_IF (centralFrequencyBand1 > 100e9);
   NS_ABORT_IF (centralFrequencyBand2 > 100e9);
-
+  
   /*
    * If the logging variable is set to true, enable the log of some components
    * through the code. The same effect can be obtained through the use
@@ -212,6 +212,7 @@ main (int argc, char *argv[])
    * the gnbs and ue following a pre-defined pattern. Please have a look at the
    * GridScenarioHelper documentation to see how the nodes will be distributed.
    */
+  
   int64_t randomStream = 1;
   GridScenarioHelper gridScenario;
   gridScenario.SetRows (1);
