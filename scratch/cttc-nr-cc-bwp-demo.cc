@@ -86,9 +86,10 @@ NS_LOG_COMPONENT_DEFINE ("3gppChannelFdmComponentCarriersBandwidthPartsExample")
 int
 main (int argc, char *argv[])
 {
+  // LogComponentEnable("NrMacSchedulerOfdmaRR", LOG_LEVEL_DEBUG);
   uint16_t gNbNum = 1;        // gNB는 1개
-  uint16_t ueNumPergNb = 300; // gNB당 연결된 UE개수 
-  uint16_t numFlowsUe = 1;
+  uint16_t ueNumPergNb = 3; // gNB당 연결된 UE개수 
+  uint16_t numFlowsUe = 3;
 
   uint8_t numBands = 1;
   double centralFrequencyBand = 28e9;
@@ -97,7 +98,7 @@ main (int argc, char *argv[])
   bool contiguousCc = false;                    // 불규칙적인 component carrier로 설정
   uint16_t numerology = 3;                      // numerology 변수
 
-  //non-contiguous case
+  // 비연속적인 상황
   double centralFrequencyCc0 = 28e9;
   double centralFrequencyCc1 = 29e9;
   double bandwidthCc0 = 400e6;
@@ -433,7 +434,7 @@ main (int argc, char *argv[])
   epcHelper->SetAttribute ("S1uLinkDelay", TimeValue (MilliSeconds (0)));  
   
   // 사용할 스케줄링 알고리즘을 nrhelper의 SetSchedulerTypeId 메소드를 통해서 설정
-  nrHelper->SetSchedulerTypeId (TypeId::LookupByName ("ns3::NrMacSchedulerOfdmaRR")); 
+  nrHelper->SetSchedulerTypeId (TypeId::LookupByName ("ns3::NrMacSchedulerTdmaRR")); 
   
   // 빔 포밍 방법
   if (cellScan)
